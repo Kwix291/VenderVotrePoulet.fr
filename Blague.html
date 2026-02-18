@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vendez votre poulet.fr</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: "Arial Black", Arial, sans-serif;
+    background: linear-gradient(135deg, #ffcc00, #ff6600, #cc0000);
+    color: black;
+    text-align: center;
+}
+
+header {
+    background-color: black;
+    color: #ffcc00;
+    padding: 20px;
+    font-size: 40px;
+    text-shadow: 3px 3px #ff6600;
+}
+
+.subtitle {
+    font-size: 18px;
+    color: #ffcc00;
+}
+
+.stats {
+    background: black;
+    color: #ffcc00;
+    padding: 15px;
+    font-size: 18px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.card {
+    background-color: rgba(0,0,0,0.85);
+    color: #ffcc00;
+    margin: 20px;
+    padding: 20px;
+    width: 280px;
+    border: 4px solid #ff6600;
+    box-shadow: 0 0 15px red;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+button {
+    background-color: #ff6600;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    color: black;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: red;
+    color: white;
+}
+
+.progress-bar {
+    width: 80%;
+    background: #222;
+    margin: 20px auto;
+    border: 2px solid black;
+}
+
+.progress {
+    height: 25px;
+    width: 0%;
+    background: #ffcc00;
+    transition: width 0.3s;
+}
+
+.review {
+    background: black;
+    color: #ffcc00;
+    padding: 15px;
+    margin: 20px;
+}
+
+footer {
+    margin-top: 40px;
+    background-color: black;
+    color: #ffcc00;
+    padding: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    🐔 VENDEZ VOTRE POULET.FR 🔥
+    <div class="subtitle">Serveur officiel du commerce de poulet Minecraft</div>
+</header>
+
+<div class="stats">
+    🐔 Poulets vendus : <span id="counter">0</span> |
+    💰 Or gagné : <span id="gold">0</span>
+</div>
+
+<div class="progress-bar">
+    <div class="progress" id="levelBar"></div>
+</div>
+<p>Niveau Marchand : <span id="level">1</span></p>
+
+<div class="container">
+
+    <div class="card">
+        <h2>Poulet Fermier Pixelisé</h2>
+        <p>+5 or</p>
+        <button onclick="sell(1,5)">Vendre</button>
+    </div>
+
+    <div class="card">
+        <h2>Poulet Rôti Nether</h2>
+        <p>+10 or 🔥</p>
+        <button onclick="sell(1,10)">Vendre</button>
+    </div>
+
+    <div class="card">
+        <h2>Poulet Légendaire</h2>
+        <p>+25 or 🏆</p>
+        <button onclick="sell(1,25)">Vendre</button>
+    </div>
+
+    <div class="card">
+        <h2>VENTE MASSIVE x10</h2>
+        <p>POULET INDUSTRIEL</p>
+        <button onclick="sell(10,50)">Vendre x10</button>
+    </div>
+
+</div>
+
+<div class="review">
+    ⭐⭐⭐⭐⭐ "Meilleur business depuis la ferme automatique !"  
+    – JeanMichelDuNether
+</div>
+
+<div class="review">
+    ⭐⭐⭐⭐⭐ "J'ai payé ma maison en blocs de diamant grâce à ça."
+</div>
+
+<footer>
+    © 2026 VendezVotrePoulet.fr - Commerce 100% légal (dans Minecraft)
+</footer>
+
+<script>
+let counter = 0;
+let gold = 0;
+let level = 1;
+
+function sell(quantity, value) {
+    counter += quantity;
+    gold += value;
+
+    document.getElementById("counter").textContent = counter;
+    document.getElementById("gold").textContent = gold;
+
+    if (counter >= level * 20) {
+        level++;
+        document.getElementById("level").textContent = level;
+        alert("LEVEL UP ! Tu es maintenant Marchand niveau " + level + " 🏆");
+    }
+
+    let progress = (counter % 20) * 5;
+    document.getElementById("levelBar").style.width = progress + "%";
+
+    randomMessage();
+}
+
+function randomMessage() {
+    const messages = [
+        "Le poulet approuve 🐔",
+        "Un creeper est jaloux 💥",
+        "Le village te respecte 🏘️",
+        "Steve est fier de toi ⛏️",
+        "Commerce validé par le Nether 🔥"
+    ];
+
+    alert(messages[Math.floor(Math.random() * messages.length)]);
+}
+</script>
+
+</body>
+</html>
